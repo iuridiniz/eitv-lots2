@@ -33,5 +33,6 @@ test_*
 !test_*.h
 doxy
 *.ts
+!samples/*.ts
 *.swp
 build
