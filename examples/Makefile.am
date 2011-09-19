@@ -1,4 +1,5 @@
-AM_CFLAGS= -I../src @GLIB_CFLAGS@ @FFMPEG_CFLAGS@ @DIRECTFB_CFLAGS@ @DBUS_GLIB_CFLAGS@
+#AM_CFLAGS= -I$(top_srcdir)/src @GLIB_CFLAGS@ @FFMPEG_CFLAGS@ @DIRECTFB_CFLAGS@ @DBUS_GLIB_CFLAGS@
+AM_CPPFLAGS = -I$(top_srcdir)/src -I../src @GLIB_CFLAGS@ @FFMPEG_CFLAGS@ @DIRECTFB_CFLAGS@ @DBUS_GLIB_CFLAGS@
 LDADD= -L../src -lmdwlots @GLIB_LIBS@ @FFMPEG_LIBS@ @DIRECTFB_LIBS@ @DBUS_GLIB_LIBS@
 
 noinst_PROGRAMS =
@@ -9,6 +10,8 @@ noinst_PROGRAMS +=\
 	test_stb810
 test_stb810_SOURCES = \
 	test_stb810.c 
+test_stb810_CFLAGS = $(AM_CFLAGS) \
+    -I$(top_srcdir)/src
 endif
 endif
 

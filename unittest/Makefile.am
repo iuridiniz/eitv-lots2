@@ -1,5 +1,5 @@
 AM_CFLAGS=@CHECK_CFLAGS@ @GLIB_CFLAGS@ @DIRECTFB_CFLAGS@ @FFMPEG_CFLAGS@ @DBUS_GLIB_CFLAGS@
-AM_CPPFLAGS=-I../src
+AM_CPPFLAGS=-I$(top_srcdir)/src -I../src
 LIBS=-L../src -lmdwlots @CHECK_LIBS@ @GLIB_LIBS@ @DIRECTFB_LIBS@ @FFMPEG_LIBS@ @DBUS_GLIB_LIBS@
 TESTS = test_ts_file_source 
 
@@ -88,7 +88,7 @@ test_sec_filter_SOURCES = \
 	test_sec_filter.c
 
 test_sec_filter_CPPFLAGS = \
-	-I../src/sec_filter
+	-I$(top_srcdir)/src/sec_filter
 
 test_sec_filter_DEPENDENCIES = \
 	../src/sec_filter/libsecfilter.la

@@ -3,3 +3,11 @@ ubuntu:
 
 X11 output:
 echo "system=sdl" >>~/.directfbrc
+
+
+quick:
+
+autoreconf --install
+./configure
+make
+make check
