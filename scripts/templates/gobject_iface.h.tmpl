@@ -1,0 +1,57 @@
+@COPYRIGHT@
+#ifndef @N_S@_@T_N@_H
+#define @N_S@_@T_N@_H
+
+#include <glib-object.h>
+
+G_BEGIN_DECLS
+
+/* preambule init */
+#define @N_S@_TYPE_@T_N@   (@n_s@_@t_n@_get_type())
+#define @N_S@_@T_N@(obj)   (G_TYPE_CHECK_INSTANCE_CAST((obj), @N_S@_TYPE_@T_N@, @NS@@TN@))
+#define @N_S@_IS_@T_N@(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), @N_S@_TYPE_@T_N@))
+#define @N_S@_@T_N@_GET_INTERFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), @N_S@_TYPE_@T_N@, @NS@@TN@Interface))
+/* preambule end */
+
+typedef struct _@NS@@TN@  @NS@@TN@; /* dummy */
+typedef struct _@NS@@TN@Interface  @NS@@TN@Interface;
+
+/**
+ * @NS@@TN@ Interface
+ *
+ */
+struct _@NS@@TN@Interface {
+    GTypeInterface parent; /**< obligatory declaration */
+    
+    /* interface methods */
+    //gboolean (*method1) (@NS@@TN@ *self); /**< Pointer Method 1 */
+    //gboolean (*method2) (@NS@@TN@ *self, guint16 param); /**< Pointer to Method2 */
+};
+
+
+/** obligatory declaration */
+GType @n_s@_@t_n@_get_type (void);
+
+/* methods declarations */
+
+/**
+ * Method 1.
+ * @param self The @NS@@TN@ instance.
+ * @return Returns TRUE on success, otherwise FALSE.
+ */
+//gboolean @n_s@_@t_n@_method1(@NS@@TN@ *self);
+//
+/**
+ * Method 2.
+ * @param self The @NS@@TN@ instance.
+ * @param self A guint16 parameter.
+ * @return Returns TRUE on success, otherwise FALSE.
+ */
+//gboolean @n_s@_@t_n@_method2(@NS@@TN@ *self, guint16 param);
+
+
+
+G_END_DECLS
+
+
+#endif /* @N_S@_@T_N@_H */

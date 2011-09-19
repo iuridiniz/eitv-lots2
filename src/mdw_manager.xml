@@ -1,0 +1,117 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/com/eitv/lots">
+    <interface name="com.eitv.lots.player">
+        <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mdw_manager"/>
+
+        <method name="play_with_pids">
+            <arg name="video_pid" type="u" direction="in"/>
+            <arg name="audio_pid" type="u" direction="in"/>
+            <arg name="pcr_pid"   type="u" direction="in"/>
+        </method>
+
+        <method name="play"/>
+        <method name="stop"/>
+
+        <method name="raise_to_top"/>
+        <method name="lower_to_bottom"/>
+        
+        <!-- <property name="is-playing" type="u" access="read"/> -->
+        <method name="is_playing">
+            <arg name="is_playing" type="b" direction="out"/>
+        </method>
+
+        <!-- <property name="width" type="u" access="readwrite"/> -->
+        <!-- <property name="height" type="u" access="readwrite"/> -->
+        <method name="set_size"> 
+            <arg name="width" type="u" direction="in"/>
+            <arg name="height" type="u" direction="in"/>
+        </method>
+
+        <method name="get_size"> 
+            <arg name="width" type="u" direction="out"/>
+            <arg name="height" type="u" direction="out"/>
+        </method>
+        <!-- <property name="max-width" type="u" access="read"/> -->
+        <!-- <property name="max-height" type="u" access="read"/> -->
+        <method name="get_max_size"> 
+            <arg name="max_width" type="u" direction="out"/>
+            <arg name="max_height" type="u" direction="out"/>
+        </method>
+
+        <!-- <property name="pos-x" type="u" access="readwrite"/> -->
+        <!-- <property name="pos-y" type="u" access="readwrite"/> -->
+        <method name="set_pos">
+            <arg name="pos_x" type="u" direction="in"/>
+            <arg name="pos_y" type="u" direction="in"/>
+        </method>
+
+        <method name="get_pos">
+            <arg name="pos_x" type="u" direction="out"/>
+            <arg name="pos_y" type="u" direction="out"/>
+        </method>
+
+        <!-- <property name="video-pid" type="q" access="readwrite"/> -->
+        <method name="get_video_pid">
+            <arg name="pid" type="u" direction="out"/>
+        </method>
+
+        <method name="set_video_pid">
+            <arg name="pid" type="u" direction="in"/>
+        </method>
+
+        <!-- <property name="audio-pid" type="q" access="readwrite"/> -->
+        <method name="get_audio_pid">
+            <arg name="pid" type="u" direction="out"/>
+        </method>
+
+        <method name="set_audio_pid">
+            <arg name="pid" type="u" direction="in"/>
+        </method>
+       
+        <!-- <property name="pcr-pid" type="q" access="readwrite"/> -->
+        <method name="get_pcr_pid">
+            <arg name="pid" type="u" direction="out"/>
+        </method>
+        <method name="set_pcr_pid">
+            <arg name="pid" type="u" direction="in"/>
+        </method>
+
+    </interface>
+    
+    <interface name="com.eitv.lots.demuxer">
+        <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mdw_manager"/>
+        <method name="add_watch">
+            <arg name="pid" type="u" direction="in"/>
+        </method>
+        <method name="del_watch">
+            <arg name="pid" type="u" direction="in"/>
+        </method>    
+        <method name="count_watch">
+            <arg name="pid" type="u" direction="in"/>
+            <arg name="count" type="u" direction="out"/>
+        </method>
+        <signal name="new_payload">
+            <arg name="pid" type="u"/>
+            <arg name="payload" type="a(y)"/>
+        </signal>
+        <signal name="watch_pid_up">
+            <arg name="pid" type="u"/>
+        </signal>
+        <signal name="watch_pid_down">
+            <arg name="pid" type="u"/>
+        </signal>
+    </interface>
+    
+    <interface name="com.eitv.lots.source">
+        <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mdw_manager"/>
+        <!-- <signal name="end-of-stream"/> -->
+        <!-- <property name="uri" type="v" access="readwrite"/> -->
+        <method name="set_uri">
+            <arg name="uri" type="s" direction="in"/>
+        </method>
+        <method name="get_uri">
+            <arg name="uri" type="s" direction="out"/>
+        </method>
+    </interface>
+</node>

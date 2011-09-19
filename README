@@ -1,0 +1,5 @@
+ubuntu:
+  apt-get install libavcodec-dev libavformat-dev libdirectfb-extra libdbus-glib-1-dev
+
+X11 output:
+echo "system=sdl" >>~/.directfbrc

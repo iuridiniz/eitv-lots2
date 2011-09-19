@@ -1,0 +1,51 @@
+@COPYRIGHT@
+#include  "@n_s@_@t_n@.h"
+
+static void
+@n_s@_@t_n@_base_init (gpointer g_class) {
+    static gboolean initialized = FALSE;
+
+    if (G_UNLIKELY(initialized == FALSE)) {
+        /* signals */
+        initialized = TRUE;
+    }
+}
+
+
+GType 
+@n_s@_@t_n@_get_type(void) {
+    static GType type = 0;
+
+    if (G_UNLIKELY(type == 0)) {
+        static const GTypeInfo info = {
+            .class_size = sizeof(@NS@@TN@Interface),
+            .base_init = @n_s@_@t_n@_base_init,
+            .base_finalize = NULL,
+            .class_init = NULL,
+            .class_finalize = NULL, 
+            .class_data = NULL,
+            .instance_size = 0,
+            .n_preallocs = 0,
+            .instance_init = NULL,
+            .value_table = NULL
+        };
+        type = g_type_register_static(G_TYPE_INTERFACE, "@NS@@TN@", &info, 0);
+    }
+    return type;
+}
+
+/*
+gboolean 
+@n_s@_@t_n@_method1(@NS@@TN@ *self) 
+{
+    return @N_S@_@T_N@_GET_INTERFACE (self)->method1(self);
+}
+*/
+
+/*
+gboolean 
+@n_s@_@t_n@_method2(@NS@@TN@ *self, guint16 param) 
+{
+    return @N_S@_@T_N@_GET_INTERFACE (self)->method2(self, param);
+}
+*/

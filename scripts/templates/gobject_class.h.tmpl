@@ -1,0 +1,114 @@
+@COPYRIGHT@
+#ifndef @N_S@_@T_N@_H
+#define @N_S@_@T_N@_H
+
+#include <glib-object.h>
+
+G_BEGIN_DECLS
+
+/* preambule init */
+#define @N_S@_TYPE_@T_N@   (@n_s@_@t_n@_get_type())
+#define @N_S@_@T_N@(obj)   (G_TYPE_CHECK_INSTANCE_CAST((obj), @N_S@_TYPE_@T_N@, @NS@@TN@))
+#define @N_S@_@T_N@_CLASS(vtable)   (G_TYPE_CHECK_CLASS_CAST((vtable), @N_S@_TYPE_@T_N@, @NS@@TN@Class))
+#define @N_S@_IS_@T_N@(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), @N_S@_TYPE_@T_N@))
+#define @N_S@_IS_@T_N@_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE((vtable), @N_S@_TYPE_@T_N@))
+#define @N_S@_@T_N@_GET_CLASS(inst) (G_TYPE_INSTANCE_GET_CLASS((inst), @N_S@_TYPE_@T_N@, @NS@@TN@Class))
+/* preambule end */
+
+/* class types */
+typedef struct _@NS@@TN@ @NS@@TN@;
+typedef struct _@NS@@TN@Class @NS@@TN@Class;
+
+/**
+ *  A @TN@ instance.
+ */
+struct _@NS@@TN@ {
+    GObject parent; /**< pointer to parent (obligatory declaration) */
+    
+    /* private members */
+    //gboolean boolean_member; /**< a boolean_member */
+    //guint8 uint8_member; /**< a uint8_member */
+    
+};
+
+
+/**
+ * A @TN@ class.
+ */
+struct _@NS@@TN@Class {
+    GObjectClass parent; /**< pointer to parent (obligatory declaration) */
+    
+    /* public methods */
+    //gboolean (*method1) (@NS@@TN@* self, guint param1, guint param2, GError** error); /**< pointer to method1, @see @n_s@_@t_n@_method1  */
+    //gboolean (*method2) (@NS@@TN@* self, guint param1, guint param2); /**< pointer to method2, @see @n_s@_@t_n@_method2 */
+};
+
+/** 
+ * Get GType id associated with @NS@@TN@ (obligatory declaration).
+ * @return Returns the GType id associated with @NS@@TN@.
+ */
+
+GType @n_s@_@t_n@_get_type(void);
+
+/****************/
+/* Constructors */
+/****************/
+
+/**
+ * Constructs a new @NS@@TN@.
+ * @return Returns a new @NS@@TN@.
+ */
+//@NS@@TN@* @n_s@_@t_n@_new();
+
+/**
+ * Constructs a new @NS@@TN@.
+ * @param param1 A guint8 parameter to construct a new @NS@@TN@ instance.
+ * @return       Returns a new @NS@@TN@.
+ */
+//@NS@@TN@* @n_s@_@t_n@_new_with_arg1(guint8 param1);
+
+
+/*******************/
+/* public methods */
+/*******************/
+
+/**
+ * Method1 of @NS@@TN@.
+ * @param self A pointer to a @NS@@TN@ instance.
+ * @param param1 A guint parameter.
+ * @param param2 A guint parameter.
+ * @param error If an error has ocurred, this variable will pointer to error ocurred, 
+ *              this variable need to be free if a error has ocurred.
+ * @Return Returns TRUE if no errors ocurred, otherwise returns FALSE.
+ */
+//gboolean (@n_s@_@t_n@_method1) (@NS@@TN@* self, guint param1, guint param2, GError** error);
+
+/**
+ * Method2 of @NS@@TN@.
+ * @param self A pointer to a @NS@@TN@ instance.
+ * @param param1 A guint parameter.
+ * @param param2 A guint parameter.
+ * @Return Returns TRUE if no errors ocurred, otherwise returns FALSE.
+ */
+
+//gboolean (@n_s@_@t_n@_method2) (@NS@@TN@* self, guint param1, guint param2);
+
+G_END_DECLS
+
+/* Error */
+/*
+#define @N_S@_@T_N@_ERROR @n_s@_@t_n@_error_quark()
+typedef enum
+{
+  @N_S@_@T_N@_ERROR_TYPE_1,
+  @N_S@_@T_N@_ERROR_TYPE_2,
+  @N_S@_@T_N@_ERROR_NOT_IMPLEMENTED,
+  @N_S@_@T_N@_ERROR_FAILED
+} @NS@@TN@Error;
+
+GQuark @n_s@_@t_n@_error_quark();
+*/
+
+
+#endif /* @N_S@_@T_N@_H */
+

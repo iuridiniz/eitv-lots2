@@ -1,0 +1,12 @@
+use GLib for all:
+ * GError for runtime errors (some done)
+ * g_assert for module bugs (some done)
+ * g_return_if_fail for module invocation bugs (programming errors) (some done)
+ * use signals (only dbus)
+ * use g_main_loop (done)
+
+ * g_log for logging 
+ * use properties and notify event 
+
+
+mdw_player: emit signals or restore state of handlers when changing the demuxer

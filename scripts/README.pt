@@ -1,0 +1,19 @@
+iniciar:
+./scripts/bootstrap.sh
+
+criar um arquivo.c:
+./scripts/new_cfile arquivo.c
+
+criar um arquivo.h
+./scripts/new_hfile arquivo.h
+
+limpar:
+make distclen && ./scripts/remove_ignored.sh
+
+atualizar lista de ignores:
+./scripts/svn_set_ignore.sh
+
+adicionar arquivos fora do repositorio (nao recursivo)
+./scripts/svn_add_missing.sh
+
+

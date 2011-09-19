@@ -1,0 +1,56 @@
+
+set noignorecase
+
+s/_iface_namespace_my_interface/_iface_mdw_demux_data_handler
+s/NamespaceMyInterface/MdwDemuxDataHandlerInterface
+
+
+s/_iface_namespace_my_interface/_iface_mdw_demux
+s/NAMESPACE_TYPE_MY_INTERFACE/MDW_TYPE_DEMUX
+
+# transformar metodos internos em externos
+perl -pe 's/\(\*(.*?)\)/stb810_player_$1/'
+!perl -pe 's/\(\*(.*?)\)/_iface_mdw_demux_$1/'
+
+# definir metodos
+perl -pe 's/^.*\(\*(.*?)\).*$/    klass->$1 = stb810_player_$1;/'
+perl -pe 's/^.*\(\*(.*?)\).*$/    demux_iface->$1 = _iface_mdw_demux_$1;/'
+
+#declarar metodos
+perl -pe 's/^(.*) (_iface.*);.*$/$1\n$2\n{\n\n}\n/g'
+
+
+#metodos de interface
+perl -pe 's/^(.*) (mdw_player_(.*)\s*\((.*)\));.*$/$1\n$2\n{\n    MDW_PLAYER_GET_INTERFACE(self)->$3($4);\n}\n/g'
+
+
+#excluir comentarios 
+s/\/\*.*\*\///
+
+
+# transformar externos em internos
+perl -pe 's/lots_manager_(\w+) \(/(*$1) (/'
+
+
+######### interface 
+# excluir comentarios
+s/\/\*\*.*\*\///
+# colocar static
+
+
+# declarar metodos no .c de: type (*func)(type* self, ...)
+# colocar namespace + tipo da interface
+!perl -pe 's/\(\*(.*?)\)/_iface_mdw_demux_$1/'
+
+# sobreescrever metodos da interface pai de: type (*func)(type* self, ...)
+!perl -pe 's/^.*\(\*(.*?)\).*$/    iface->$1 = _iface_mdw_demux_$1;/'
+
+
+
+
+############ dbus
+perl -ne 'print if /com_eitv_lots_.*?\(DBusGProxy/ and not /(_async ?|typedef)/ ' lots_manager_client.h
+perl -ne 'print if /com_eitv_lots_.*?\(DBusGProxy/ and not /(_async ?|typedef)/ ' lots_manager_client.h  | perl -pe 's/com_eitv_lots_\w+?_/gboolean lots_manager_/;s/DBusGProxy \*proxy/LotsManager *self/' | perl -pe 's/$/;/'
+
+#rename
+ perl -pe 's/stb810_player/mdw_stb810_player/g;s/STB810_PLAYER/MDW_STB810_PLAYER/g;s/Stb810Player/MdwStb810Player/g;s/STB810_TYPE_PLAYER/MDW_TYPE_STB810_PLAYER/g;s/STB810_IS_PLAYER/MDW_IS_STB810_PLAYER/g' mdw_stb810_player.c mdw_stb810_player.h
